@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de Contactos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+          Contactos
+        </ion-list-header>
+
+        <ion-item (click)="linkChat(contact.telefono,contact.nombre)" *ngFor="let contact of contacts">
+          <ion-avatar slot="start">
+            <img src="/assets/avatar/avatar-contact.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ contact.nombre }}</h2>
+            <h3>{{ contact.telefono }}</h3>
+          </ion-label>
+        </ion-item>
+    </ion-list>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="presentAlert()">
+          <ion-icon name="contact"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>

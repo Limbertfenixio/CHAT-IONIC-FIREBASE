@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Activamos los eventos de scroll de angular -->
+<ion-content [scrollEvents]="true">
+    <div class="message-wrap">
+      <!-- iteramos sobre el arreglo de mensajes asignamos la clase left si el id del usuario no es el actual y la clase right si el id es el actual -->
+      <div *ngFor="let message of messages" class="message " [class.left]=" message.id_usuario != id "
+      [class.right]=" message.id_usuario == id">
+        <div class="msg-detail">
+          <div class="msg-content">
+            <!-- mostramos todos los mensajes obtenidos -->
+            <span class="triangle" *ngIf="message.mensaje != null"><p class="line-breaker" >{{ message.mensaje }}</p></span>
+            <span class="triangle" *ngIf="message.uriImage != null"><img src="{{message.uriImage}}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="input-wrap">
+      <ion-input padding placeholder="Escriba algo" [(ngModel)]="msg"></ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="sendMessage()"><ion-icon name="send"></ion-icon></ion-button>
+        <ion-button (click)="openImagePicker()"><ion-icon name="link"></ion-icon></ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

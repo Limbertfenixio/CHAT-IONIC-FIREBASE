@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>list-chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+          Ultimos Mensajes
+        </ion-list-header>
+
+        <ion-item (click)="linkChat(chat.telefono_des,chat.nombre_des)" *ngFor="let chat of chats; trackBy: index">
+          <ion-avatar slot="start">
+            <img src="/assets/avatar/avatar-contact.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2 *ngIf="estnom == true">{{chat.nombre_des}}</h2>
+            <h2 *ngIf="estnom == false">{{chat.telefono_des}}</h2>
+            <h3>{{chat.telefono_des}}</h3>
+            <p>leer mensaje...</p>
+          </ion-label>
+        </ion-item>
+
+      
+      </ion-list>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="success" (click)="addContact()">
+          <ion-icon name="chatboxes"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>
